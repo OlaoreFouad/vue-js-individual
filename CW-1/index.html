@@ -18,7 +18,7 @@
                 </li>
             </ul>
             <button class="main-header__item-button">
-                 <i class="fa fa-shopping-cart"></i> Cart (3)
+                 <i class="fa fa-shopping-cart"></i> Cart
             </button>
         </header>
 
@@ -81,75 +81,15 @@
                 
                 <div class="shopping-items">
 
-                    <div class="item">
+                    <div class="item" v-for="lesson in lessons">
                         <div class="item-content">
                             <div class="item-details">
-                                <span>Subject: Maths</span>
-                                <span>Location: Ikeja</span>
-                                <span>Price: $500</span>
-                                <span>Spaces: 5</span>
+                                <span>Subject: {{ lesson.name }}</span><br>
+                                <span>Location: {{ lesson.location }}</span><br>
+                                <span>Price: ${{ lesson.price }}</span><br>
+                                <span>Spaces: {{ lesson.spaces }}</span><br>
                             </div>
-                            <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
-                        </div>
-                        <div style="text-align: center;">
-                            <button class="item-action">Add To Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <span>Subject: Maths</span>
-                                <span>Location: Ikeja</span>
-                                <span>Price: $500</span>
-                                <span>Spaces: 5</span>
-                            </div>
-                            <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
-                        </div>
-                        <div style="text-align: center;">
-                            <button class="item-action">Add To Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <span>Subject: Maths</span>
-                                <span>Location: Ikeja</span>
-                                <span>Price: $500</span>
-                                <span>Spaces: 5</span>
-                            </div>
-                            <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
-                        </div>
-                        <div style="text-align: center;">
-                            <button class="item-action">Add To Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <span>Subject: Maths</span>
-                                <span>Location: Ikeja</span>
-                                <span>Price: $500</span>
-                                <span>Spaces: 5</span>
-                            </div>
-                            <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
-                        </div>
-                        <div style="text-align: center;">
-                            <button class="item-action">Add To Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <span>Subject: Maths</span>
-                                <span>Location: Ikeja</span>
-                                <span>Price: $500</span>
-                                <span>Spaces: 5</span>
-                            </div>
-                            <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
+                            <img v-bind:src="lesson.image" class="item-image">
                         </div>
                         <div style="text-align: center;">
                             <button class="item-action">Add To Cart</button>
@@ -168,10 +108,10 @@
                 <div class="item">
                     <div class="item-content">
                         <div class="item-details">
-                            <span>Subject: Maths</span>
-                            <span>Location: Ikeja</span>
-                            <span>Price: $500</span>
-                            <span>Spaces: 5</span>
+                            <span>Subject: Maths</span><br>
+                            <span>Location: Ikeja</span><br>
+                            <span>Price: $500</span><br>
+                            <span>Spaces: 5</span><br>
                         </div>
                         <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
                     </div>
@@ -183,10 +123,10 @@
                 <div class="item">
                     <div class="item-content">
                         <div class="item-details">
-                            <span>Subject: Maths</span>
-                            <span>Location: Ikeja</span>
-                            <span>Price: $500</span>
-                            <span>Spaces: 5</span>
+                            <span>Subject: Maths</span><br>
+                            <span>Location: Ikeja</span><br>
+                            <span>Price: $500</span><br>
+                            <span>Spaces: 5</span><br>
                         </div>
                         <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
                     </div>
@@ -215,6 +155,18 @@
 
     </div>
 
+    <script src="https://unpkg.com/vue" ></script>
+    <script src="./lessons.js"></script>
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                lessons: lessons
+            }
+        })
+
+    </script>
     
 </body>
 </html>

@@ -64,7 +64,7 @@ body {
 }
 
 #sorting-container {
-    width: 30%;
+    width: 20%;
 }
 
 .sort-param {
@@ -78,7 +78,7 @@ body {
 }
 
 #shopping-container {
-    width: 70%;
+    width: 80%;
 }
 
 .shopping-items {
@@ -89,7 +89,7 @@ body {
 .item {
     padding: 20px 10px;
     border: 1px solid rgb(95, 31, 179);
-    width: 250px;
+    width: 300px;
     border-radius: 4px;
     margin: 0 20px 20px 0;
 }
@@ -100,12 +100,17 @@ body {
 }
 
 .item-details {
-    width: 45%;
+    width: 50%;
+}
+
+.item-details span {
+    padding-bottom: .2px;
 }
 
 .item-image {
     display: block;
-    width: 55%;
+    width: 50%;
+    height: 100px;
 }
 
 button.item-action, button.checkout-action {
