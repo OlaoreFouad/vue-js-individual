@@ -17,8 +17,8 @@
                     <a class="main-header__item-link active">Lessons</a>
                 </li>
             </ul>
-            <button class="main-header__item-button">
-                 <i class="fa fa-shopping-cart"></i> Cart
+            <button class="main-header__item-button" v-if="cart.length != 0" >
+                <i class="fa fa-shopping-cart"></i> Cart ({{ itemsInCart }})
             </button>
         </header>
 
@@ -81,7 +81,7 @@
                 
                 <div class="shopping-items">
 
-                    <div class="item" v-for="lesson in lessons">
+                    <div class="item" v-for="(lesson, index) in lessons">
                         <div class="item-content">
                             <div class="item-details">
                                 <span>Subject: {{ lesson.name }}</span><br>
@@ -92,7 +92,13 @@
                             <img v-bind:src="lesson.image" class="item-image">
                         </div>
                         <div style="text-align: center;">
-                            <button class="item-action">Add To Cart</button>
+                            <button 
+                                class="item-action" 
+                                v-on:click="addToCart(lesson, index)" 
+                                v-if="lesson.spaces > 0">Add To Cart</button>
+                            <button 
+                                class="item-action disabled" 
+                                v-else>Add To Cart</button>
                         </div>
                     </div>
 
@@ -131,7 +137,7 @@
                         <img src="https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/7368/98ccc88836e34c906c9f752a98335ea3/3/53d7cc7eb63940eaae991f6eb81bb755/2210107.jpg" alt="" class="item-image">
                     </div>
                     <div style="text-align: center;">
-                        <button class="item-action">Remove</button>
+                        <button class="item-action" >Remove</button>
                     </div>
                 </div>
             </div>
@@ -162,7 +168,19 @@
         var app = new Vue({
             el: '#app',
             data: {
-                lessons: lessons
+                lessons: lessons,
+                cart: []
+            },
+            methods: {
+                addToCart: function(lesson, idx) {
+                    this.cart.push(lesson);
+                    this.lessons[idx].spaces--;
+                }
+            },
+            computed: {
+                itemsInCart: function() {
+                    return this.cart.length;
+                }
             }
         })
 

@@ -1,5 +1,6 @@
 const lessons = [
     {
+        id: 1000,
         name: 'Biology',
         location: 'Brussels',
         price: 1000,
@@ -7,6 +8,7 @@ const lessons = [
         image: './images/biology.png'
     },
     {
+        id: 1001,
         name: 'Maths',
         location: 'Montenegro',
         price: 270,
@@ -14,6 +16,7 @@ const lessons = [
         image: './images/maths.jpg'
     },
     {
+        id: 1002,
         name: 'Physics',
         location: 'Paris',
         price: 1500,
@@ -21,6 +24,7 @@ const lessons = [
         image: './images/physics.png'
     },
     {
+        id: 1003,
         name: 'Chemistry',
         location: 'Cairo',
         price: 400,
@@ -28,6 +32,7 @@ const lessons = [
         image: './images/chemistry.jpg'
     },
     {
+        id: 1004,
         name: 'Programming',
         location: 'Tokyo',
         price: 250,
@@ -35,6 +40,7 @@ const lessons = [
         image: './images/programming.jpg'
     },
     {
+        id: 1005,
         name: 'Databases',
         location: 'Nairobi',
         price: 1400,
@@ -42,6 +48,7 @@ const lessons = [
         image: './images/databases.png'
     },
     {
+        id: 1006,
         name: 'Economics',
         location: 'Stockholm',
         price: 560,
@@ -49,6 +56,7 @@ const lessons = [
         image: './images/economics.jpg'
     },
     {
+        id: 1007,
         name: 'Advanced Mathematics',
         location: 'Denver',
         price: 1200,
@@ -56,6 +64,7 @@ const lessons = [
         image: './images/adv_maths.jpg'
     },
     {
+        id: 1008,
         name: 'Data Processing',
         location: 'Rio',
         price: 410,
@@ -63,6 +72,7 @@ const lessons = [
         image: './images/data-processing.jpg'
     },
     {
+        id: 1009,
         name: 'Anatomy',
         location: 'Carlifonia',
         price: 700,
