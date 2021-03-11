@@ -185,7 +185,7 @@
                     this.sortBy = sortBy;
                 },
                 sortBySubject: function() {
-                    lessons.sort(function(lesson1, lesson2) {
+                    this.lessons.sort(function(lesson1, lesson2) {
                         const subject1 = lesson1.name.charAt(0).toUpperCase();
                         const subject2 = lesson2.name.charAt(0).toUpperCase();
 
@@ -198,10 +198,10 @@
                         }
                     })
 
-                    return lessons;
+                    return this.lessons;
                 },
                 sortByLocation: function() {
-                    lessons.sort(function(lesson1, lesson2) {
+                    this.lessons.sort(function(lesson1, lesson2) {
                         const location1 = lesson1.location.charAt(0).toUpperCase();
                         const location2 = lesson2.location.charAt(0).toUpperCase();
 
@@ -214,7 +214,20 @@
                         }
                     })
 
-                    return lessons;
+                    return this.lessons;
+                },
+                sortByPrice: function() {
+                    this.lessons.sort(function(subject1, subject2) {
+                        if (subject1.price < subject2.price) {
+                            return -1;
+                        } else if (subject1.price > subject2.price) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    }) 
+
+                    return this.lessons;
                 }
             },
             computed: {
@@ -232,6 +245,8 @@
                             const sortedByLocation = this.sortByLocation()
                             return sortedByLocation;
                         case 'price':
+                            const sortedByPrice = this.sortByPrice()
+                            return sortedByPrice;
                             break;
                         case 'spaces':
                             break;
