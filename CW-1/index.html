@@ -30,29 +30,33 @@
                         <div class="form-control">
                             <input 
                                 type="radio" 
-                                name="sortBy" 
-                                value="Subject" />
+                                name="sortBy"
+                                v-on:change="sortLessons('subject')" 
+                                value="subject" />
                             <label>Subject</label>
                         </div>
                         <div class="form-control">
                             <input 
                                 type="radio" 
                                 name="sortBy" 
-                                value="Location" /> 
+                                v-on:change="sortLessons('location')"
+                                value="location" /> 
                             <label>Location</label>
                         </div>
                         <div class="form-control">
                             <input 
                                 type="radio" 
                                 name="sortBy" 
-                                value="Price" />
+                                v-on:change="sortLessons('price')"
+                                value="price" />
                             <label>Price</label>
                         </div>
                         <div class="form-control">
                             <input 
                                 type="radio" 
                                 name="sortBy" 
-                                value="Availability" />
+                                v-on:change="sortLessons('spaces')"
+                                value="availability" />
                             <label>Availability</label>
                         </div>
                     </form>
@@ -81,7 +85,7 @@
                 
                 <div class="shopping-items">
 
-                    <div class="item" v-for="(lesson, index) in lessons">
+                    <div class="item" v-for="(lesson, index) in sortedProducts">
                         <div class="item-content">
                             <div class="item-details">
                                 <span>Subject: {{ lesson.name }}</span><br>
@@ -169,17 +173,72 @@
             el: '#app',
             data: {
                 lessons: lessons,
-                cart: []
+                cart: [],
+                sortBy: ''
             },
             methods: {
                 addToCart: function(lesson, idx) {
                     this.cart.push(lesson);
                     this.lessons[idx].spaces--;
+                },
+                sortLessons: function(sortBy) {
+                    this.sortBy = sortBy;
+                },
+                sortBySubject: function() {
+                    lessons.sort(function(lesson1, lesson2) {
+                        const subject1 = lesson1.name.charAt(0).toUpperCase();
+                        const subject2 = lesson2.name.charAt(0).toUpperCase();
+
+                        if (subject1 < subject2) {
+                            return -1;
+                        } else if (subject1 > subject2) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    })
+
+                    return lessons;
+                },
+                sortByLocation: function() {
+                    lessons.sort(function(lesson1, lesson2) {
+                        const location1 = lesson1.location.charAt(0).toUpperCase();
+                        const location2 = lesson2.location.charAt(0).toUpperCase();
+
+                        if (location1 < location2) {
+                            return -1;
+                        } else if (location1 > location2) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    })
+
+                    return lessons;
                 }
             },
             computed: {
                 itemsInCart: function() {
                     return this.cart.length;
+                },
+                sortedProducts: function() {
+                    const lessons = this.lessons.slice(0);
+                    
+                    switch(this.sortBy) {
+                        case 'subject':
+                            const sortedBySubject = this.sortBySubject()
+                            return sortedBySubject;
+                        case 'location':
+                            const sortedByLocation = this.sortByLocation()
+                            return sortedByLocation;
+                        case 'price':
+                            break;
+                        case 'spaces':
+                            break;
+                        default:
+                            return lessons;
+                    }
+                
                 }
             }
         })
