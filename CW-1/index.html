@@ -31,7 +31,7 @@
                             <input 
                                 type="radio" 
                                 name="sortBy"
-                                v-on:change="sortLessons('subject')" 
+                                v-model="sortBy"
                                 value="subject" />
                             <label>Subject</label>
                         </div>
@@ -39,7 +39,7 @@
                             <input 
                                 type="radio" 
                                 name="sortBy" 
-                                v-on:change="sortLessons('location')"
+                                v-model="sortBy"
                                 value="location" /> 
                             <label>Location</label>
                         </div>
@@ -47,7 +47,7 @@
                             <input 
                                 type="radio" 
                                 name="sortBy" 
-                                v-on:change="sortLessons('price')"
+                                v-model="sortBy"
                                 value="price" />
                             <label>Price</label>
                         </div>
@@ -55,8 +55,8 @@
                             <input 
                                 type="radio" 
                                 name="sortBy" 
-                                v-on:change="sortLessons('spaces')"
-                                value="availability" />
+                                v-model="sortBy"
+                                value="spaces" />
                             <label>Availability</label>
                         </div>
                     </form>
@@ -180,9 +180,6 @@
                 addToCart: function(lesson, idx) {
                     this.cart.push(lesson);
                     this.lessons[idx].spaces--;
-                },
-                sortLessons: function(sortBy) {
-                    this.sortBy = sortBy;
                 },
                 sortBySubject: function() {
                     this.lessons.sort(function(lesson1, lesson2) {
