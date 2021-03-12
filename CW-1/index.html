@@ -140,15 +140,15 @@
             <form class="checkout-form">
                 <div class="form-control">
                     <label for="name">Name: </label>
-                    <input type="text" id="name">
+                    <input type="text" v-model="details.name" id="name">
                 </div>
 
                 <div class="form-control">
                     <label for="phone">Phone: </label>
-                    <input type="text" id="phone">
+                    <input type="text" v-model="details.phone" id="phone">
                 </div>
 
-                <button class="checkout-action" style="margin-top: 0;">Checkout</button>
+                <button class="checkout-action" type="button" style="margin-top: 0;" v-on:click="checkout()" >Checkout</button>
 
             </form>
 
@@ -167,7 +167,11 @@
                 cart: [],
                 sortBy: '',
                 order: '',
-                showProducts: true
+                showProducts: true,
+                details: {
+                    name: '',
+                    phone: ''
+                }
             },
             methods: {
                 addToCart: function(lesson, idx) {
@@ -247,6 +251,15 @@
                     this.cart.splice(idx, 1);
                     if (this.cart.length == 0) {
                         this.showProducts = true;
+                    }
+                },
+                checkout: function() {
+                    if (this.details.name == '' || this.details.phone == '') {
+                        alert('Please fill the checkout form appropriately')
+                        return;
+                    } else {
+                        alert(`Dear ${ this.details.name }, your order for ${ this.itemsInCart } items has been submitted and we would be in touch via ${ this.details.phone } `);
+                        location.reload()
                     }
                 }
             },
