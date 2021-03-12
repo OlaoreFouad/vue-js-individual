@@ -68,14 +68,16 @@
                             <input 
                                 type="radio" 
                                 name="order" 
-                                value="Ascending" />
+                                v-model="order"
+                                value="asc" />
                             <label>Ascending</label>
                         </div>
                         <div class="form-control">
                             <input 
                                 type="radio" 
                                 name="order" 
-                                value="Descending" /> 
+                                v-model="order"
+                                value="desc" /> 
                             <label>Descending</label>
                         </div>
                     </form>
@@ -174,7 +176,8 @@
             data: {
                 lessons: lessons,
                 cart: [],
-                sortBy: ''
+                sortBy: '',
+                order: ''
             },
             methods: {
                 addToCart: function(lesson, idx) {
@@ -182,14 +185,15 @@
                     this.lessons[idx].spaces--;
                 },
                 sortBySubject: function() {
+                    const order = this.order;
                     this.lessons.sort(function(lesson1, lesson2) {
                         const subject1 = lesson1.name.charAt(0).toUpperCase();
                         const subject2 = lesson2.name.charAt(0).toUpperCase();
 
                         if (subject1 < subject2) {
-                            return -1;
+                            return order == 'asc' ? -1 : (order == 'desc' ? 1 : -1);
                         } else if (subject1 > subject2) {
-                            return 1;
+                            return order == 'asc' ? 1 : (order == 'desc' ? -1 : 1);
                         } else {
                             return 0;
                         }
@@ -198,14 +202,15 @@
                     return this.lessons;
                 },
                 sortByLocation: function() {
+                    const order = this.order;
                     this.lessons.sort(function(lesson1, lesson2) {
                         const location1 = lesson1.location.charAt(0).toUpperCase();
                         const location2 = lesson2.location.charAt(0).toUpperCase();
 
                         if (location1 < location2) {
-                            return -1;
+                            return order == 'asc' ? -1 : (order == 'desc' ? 1 : -1);
                         } else if (location1 > location2) {
-                            return 1;
+                            return order == 'asc' ? 1 : (order == 'desc' ? -1 : 1);
                         } else {
                             return 0;
                         }
@@ -214,25 +219,27 @@
                     return this.lessons;
                 },
                 sortByPrice: function() {
+                    const order = this.order;
                     this.lessons.sort(function(subject1, subject2) {
                         if (subject1.price < subject2.price) {
-                            return -1;
+                            return order == 'asc' ? -1 : (order == 'desc' ? 1 : -1);
                         } else if (subject1.price > subject2.price) {
-                            return 1;
+                            return order == 'asc' ? 1 : (order == 'desc' ? -1 : 1);
                         } else {
                             return 0;
                         }
-                    }) 
+                    })
 
                     return this.lessons;
                 },
                 sortBySpace: function() {
 
+                    const order = this.order;
                     this.lessons.sort(function(subject1, subject2) {
                         if (subject1.spaces < subject2.spaces) {
-                            return -1;
+                            return order == 'asc' ? -1 : (order == 'desc' ? 1 : -1);
                         } else if (subject1.spaces > subject2.spaces) {
-                            return 1;
+                            return order == 'asc' ? 1 : (order == 'desc' ? -1 : 1);
                         } else {
                             return 0;
                         }
