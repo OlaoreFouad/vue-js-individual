@@ -145,10 +145,21 @@
 
                 <div class="form-control">
                     <label for="phone">Phone: </label>
-                    <input type="text" v-model="details.phone" id="phone">
+                    <input type="number" minlength="11" v-model="details.phone" id="phone">
                 </div>
 
-                <button class="checkout-action" type="button" style="margin-top: 0;" v-on:click="checkout()" >Checkout</button>
+                <button 
+                    class="checkout-action" 
+                    type="button" 
+                    style="margin-top: 0;" 
+                    v-if="details.name && details.phone"
+                    v-on:click="checkout()" >Checkout</button>
+                <button 
+                    class="checkout-action disabled" 
+                    type="button" 
+                    v-else
+                    style="margin-top: 0;" 
+                    v-on:click="checkout()" >Checkout</button>
 
             </form>
 
@@ -254,13 +265,8 @@
                     }
                 },
                 checkout: function() {
-                    if (this.details.name == '' || this.details.phone == '') {
-                        alert('Please fill the checkout form appropriately')
-                        return;
-                    } else {
-                        alert(`Dear ${ this.details.name }, your order for ${ this.itemsInCart } items has been submitted and we would be in touch via ${ this.details.phone } `);
-                        location.reload()
-                    }
+                    alert(`Dear ${ this.details.name }, your order for ${ this.itemsInCart } items has been submitted and we would be in touch via ${ this.details.phone } `);
+                    location.reload()
                 }
             },
             computed: {

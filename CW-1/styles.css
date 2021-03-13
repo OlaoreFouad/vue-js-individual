@@ -130,7 +130,7 @@ button.item-action:hover, button.checkout-action:hover {
     cursor: pointer;
 }
 
-button.item-action.disabled {
+button.item-action.disabled, button.checkout-action.disabled {
     cursor: not-allowed;
     background-color: rgba(95, 31, 179, .5);
 }
