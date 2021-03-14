@@ -1,0 +1,6 @@
+In this ZIP file is my code submission for my Individual Coursework 1. Kindly find below my details:
+
+1. Name: Fouad Olamide Olaore
+2. MISIS: M00811451
+3. GitHub Repository URL: https://github.com/OlaoreFouad/vue-js-individual
+4. Website hosted on GitHub Pages at: https://olaorefouad.github.io/vue-js-individual/CW-1/
